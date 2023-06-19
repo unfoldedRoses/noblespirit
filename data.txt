@@ -1,0 +1,12 @@
+{
+  "username": "testman",
+  "email": "testman@gmail.com",
+  "password": "01234567",
+  "status": "active",
+  "role": "learner"
+}
+
+
+
+
+
