@@ -7,6 +7,7 @@ const authController = require('../controllers/authController');
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+router.post('/logout', authController.logout);
 // router.get('/protected', authMiddleware.authenticate, (req, res) => {
 //   // Protected route logic
 // });

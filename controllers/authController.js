@@ -80,7 +80,17 @@ const login = async (req, res) => {
   }
 };
 
+ 
+const logout = (req, res) => {
+  // Clear the token cookie by setting an expired date
+  res.cookie('token', '', { expires: new Date(0), httpOnly: true });
+
+  res.status(200).json({ message: 'Logout successful' });
+};
+ 
+
 module.exports = {
   register,
   login,
+  logout
 };

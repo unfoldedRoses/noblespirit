@@ -54,7 +54,19 @@ const authorizeLearner = (req, res, next) => {
   next();
 };
 
+const authorizeAdmin = (req, res, next) => {
+  // Check if the authenticated user has the 'admin' role
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ message: 'Access denied' });
+  }
+
+  next();
+};
+
+
+
 module.exports = {
   authMiddleware,
   authorizeLearner,
+  authorizeAdmin,
 };

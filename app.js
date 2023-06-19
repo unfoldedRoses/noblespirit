@@ -7,13 +7,20 @@ const cookieParser = require('cookie-parser');
 const { sequelize } = require('./models'); // Import Sequelize instance
 const authRoutes = require('./routes/authRoutes');
 const learnerRoutes = require('./routes/learnerRoutes');
+require('dotenv').config()
 
-var corsOptions = {
-  origin: '*'
-}
+
+// var corsOptions = {
+//   origin: 'http://localhost:4000',
+//   credentials: true
+// }
 
 // Middleware
-app.use(cors(corsOptions))
+app.use(cors({
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 // Use the cookie-parser middleware
 app.use(cookieParser());
