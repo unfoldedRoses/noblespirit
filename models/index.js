@@ -3,11 +3,39 @@ const Sequelize = require('sequelize');
 const path = require('path');
 const fs = require('fs');
 
-const sequelize = new Sequelize('mydata', 'postgres', 'your-password', {
-  host: 'localhost',
-  dialect: 'postgres', // Replace with your database dialect if using a different one (e.g., postgres, sqlite, etc.)
-  port: 5432, // Replace with your database port number
-});
+const dotenv = require('dotenv');
+dotenv.config();
+
+const url = process.env.DB_HOST;
+const regex = /\/\/([^/]+)\/(.+)$/;
+const match = url.match(regex);
+
+let sequelize; 
+
+if (match) {
+  const hostname = match[1];
+  const databaseName = match[2];
+
+  console.log(hostname,databaseName,"999999999")
+
+   sequelize = new Sequelize("mydata_zgjy", process.env.DB_USERNAME, "6DowaXvlctRljtoCLhrg1rVtgHLn9nW7", {
+    host: "dpg-ci839p18g3n3vm2uj580-a.singapore-postgres.render.com",
+    dialect: 'postgres', // Replace with your database dialect if using a different one (e.g., postgres, sqlite, etc.)
+    port: 5432,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // Set this to false if you're using a self-signed certificate
+      }
+    } // Replace with your database port number
+  });
+} else {
+  console.error('Invalid connection URL');
+}
+
+
+
+
 
 const db = {};
 
