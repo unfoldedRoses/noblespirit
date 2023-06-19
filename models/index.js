@@ -13,12 +13,12 @@ dotenv.config();
     host: "dpg-ci839p18g3n3vm2uj580-a.singapore-postgres.render.com",
     dialect: 'postgres', // Replace with your database dialect if using a different one (e.g., postgres, sqlite, etc.)
     port: 5432,
-    // dialectOptions: {
-    //   ssl: {
-    //     require: true,
-    //     rejectUnauthorized: false // Set this to false if you're using a self-signed certificate
-    //   }
-    // } // Replace with your database port number
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // Set this to false if you're using a self-signed certificate
+      }
+    } // Replace with your database port number
   });
 
 
