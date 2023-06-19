@@ -37,8 +37,12 @@ const register = async (req, res) => {
      // Generate JWT token
      const token = jwt.sign({ id: newUser.id }, jwtSecret, { expiresIn: '1d' });
 
-     // Attach the token to a cookie in the response
-     res.cookie('token', token, { httpOnly: true });
+
+     // Set the cookie with the token
+    res.cookie('token', token, {
+      httpOnly: true, // Ensures the cookie is accessible only via HTTP(S)
+      maxAge: 24 * 60 * 60 * 1000, // Cookie expiration time (e.g., 1 day)
+    });
  
 
     res.status(201).json({ message: 'User created successfully' });

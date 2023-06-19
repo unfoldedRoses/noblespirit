@@ -3,6 +3,7 @@
 const express = require('express');
 const app = express();
 const cors=require('cors')
+const cookieParser = require('cookie-parser');
 const { sequelize } = require('./models'); // Import Sequelize instance
 const authRoutes = require('./routes/authRoutes');
 const learnerRoutes = require('./routes/learnerRoutes');
@@ -14,7 +15,8 @@ var corsOptions = {
 // Middleware
 app.use(cors(corsOptions))
 
-
+// Use the cookie-parser middleware
+app.use(cookieParser());
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
