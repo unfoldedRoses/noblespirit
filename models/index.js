@@ -9,17 +9,17 @@ dotenv.config();
 
 
 
-  const sequelize = new Sequelize("mydata_zgjy", "praveen", "6DowaXvlctRljtoCLhrg1rVtgHLn9nW7", {
-    host: "dpg-ci839p18g3n3vm2uj580-a.singapore-postgres.render.com",
-    dialect: 'postgres', // Replace with your database dialect if using a different one (e.g., postgres, sqlite, etc.)
-    port: 5432,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false // Set this to false if you're using a self-signed certificate
-      }
-    } // Replace with your database port number
-  });
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+  host: process.env.DB_HOST,
+  dialect: 'postgres',
+  port: 5432,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
+});
 
 
 
