@@ -9,11 +9,11 @@ dotenv.config();
 
 // Load environment variables manually
 const jwtSecret = process.env.JWT_SECRET || 'default_secret';
-console.log(jwtSecret,">>>>")
+
 
 const register = async (req, res) => {
   try {
-    console.log(req.body,">>>")
+   
     const { username, email, password, role,status } = req.body;
 
     // Check if user with the same email already exists
