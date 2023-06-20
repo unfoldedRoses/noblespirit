@@ -87,10 +87,36 @@ const logout = (req, res) => {
 
   res.status(200).json({ message: 'Logout successful' });
 };
+
+// @desc      Get current logged in user
+// @route     GET /api/v1/auth/me
+// @access    Private
+const getMe = async (req, res, next) => {
+  try {
+    const user = req.user;
+
+    if (!user) {
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to retrieve user data',
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: user,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
  
 
 module.exports = {
   register,
   login,
-  logout
+  logout,
+  getMe,
 };

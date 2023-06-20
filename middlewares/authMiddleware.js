@@ -65,8 +65,9 @@ const authorizeAdmin = (req, res, next) => {
 
 
 
+
 module.exports = {
-  authMiddleware,
+   authMiddleware,
   authorizeLearner,
   authorizeAdmin,
 };

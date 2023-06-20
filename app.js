@@ -36,7 +36,7 @@ app.use('/api/learners', learnerRoutes);
 
 // Start the server
 sequelize.sync().then(() => {
-  app.listen(3008, () => {
+  app.listen(3006, () => {
     console.log('Server is running on port 3000');
   });
 }).catch(error => {
