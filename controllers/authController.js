@@ -77,6 +77,7 @@ const login = async (req, res) => {
     //   httpOnly: true, // Ensures the cookie is accessible only via HTTP(S)
     //   maxAge: 24 * 60 * 60 * 1000, // Cookie expiration time (e.g., 1 day)
     // });
+    
 
     // Set the cookie in the response
     // res.cookie('token', token, {
@@ -86,8 +87,12 @@ const login = async (req, res) => {
     //   maxAge: 24 * 60 * 60 * 1000,
     // });
 
-    res.setHeader('Set-Cookie', 'token=token; Secure; SameSite=None; Max-Age=3600');
-   
+    // res.setHeader('Set-Cookie', 'token=token; Secure; SameSite=None; Max-Age=3600');
+   res.cookie('token', 'token', {
+  secure: true,
+  sameSite: 'none',
+  maxAge: 3600000, // in milliseconds
+});
 
 
 
