@@ -73,9 +73,17 @@ const login = async (req, res) => {
       expiresIn: '1h',
     });
 
+    // res.cookie('token', token, {
+    //   httpOnly: true, // Ensures the cookie is accessible only via HTTP(S)
+    //   maxAge: 24 * 60 * 60 * 1000, // Cookie expiration time (e.g., 1 day)
+    // });
+
+    // Set the cookie in the response
     res.cookie('token', token, {
-      httpOnly: true, // Ensures the cookie is accessible only via HTTP(S)
-      maxAge: 24 * 60 * 60 * 1000, // Cookie expiration time (e.g., 1 day)
+      httpOnly: true,
+      secure: true,
+      sameSite: 'None',
+      maxAge: 24 * 60 * 60 * 1000,
     });
 
     res.status(200).json({ token ,role:user.role});
