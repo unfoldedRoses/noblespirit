@@ -79,12 +79,14 @@ const login = async (req, res) => {
     // });
 
     // Set the cookie in the response
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'None',
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+    // res.cookie('token', token, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: 'None',
+    //   maxAge: 24 * 60 * 60 * 1000,
+    // });
+
+    res.setHeader('Set-Cookie', 'token=token; HttpOnly; Secure; SameSite=None; Max-Age=3600');
 
     res.status(200).json({ token ,role:user.role});
   } catch (error) {
