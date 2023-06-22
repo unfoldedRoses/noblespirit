@@ -19,7 +19,7 @@ require('dotenv').config()
 app.use(cors({
   origin: process.env.CLIENT_URL,
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  // allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Use the cookie-parser middleware
