@@ -74,6 +74,7 @@ const login = async (req, res) => {
 
     // Set the token as a cookie
     res.cookie('token', token, {
+      domain: 'https://noblespirit.onrender.com',
       httpOnly: true,
       secure: true, // Enable this in production if using HTTPS
       maxAge: 3600000, // 1 hour expiration
