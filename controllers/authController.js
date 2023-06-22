@@ -39,7 +39,7 @@ const register = async (req, res) => {
 
 
    // Set the cookie with the token
-    res.cookie('token', token, {
+    res.cookie('tokens', token, {
       httpOnly: true,
       maxAge: 3600000, // 1 hour
     });
