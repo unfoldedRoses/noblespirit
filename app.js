@@ -2,29 +2,23 @@
 
 const express = require('express');
 const app = express();
-const cors=require('cors')
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const { sequelize } = require('./models'); // Import Sequelize instance
+const { sequelize } = require('./models');
 const authRoutes = require('./routes/authRoutes');
 const learnerRoutes = require('./routes/learnerRoutes');
-require('dotenv').config()
-
-
-// var corsOptions = {
-//   origin: 'http://localhost:4000',
-//   credentials: true
-// }
+require('dotenv').config();
 
 // Middleware
 app.use(cors({
-  // origin: process.env.CLIENT_URL,
-   origin: 'https://noble-spiritz.vercel.app',
+  origin: process.env.CLIENT_URL,
   credentials: true,
-  // allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Use the cookie-parser middleware
 app.use(cookieParser());
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -34,11 +28,16 @@ app.use('/api/auth', authRoutes);
 // Learner routes
 app.use('/api/learners', learnerRoutes);
 
+// Error handler middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: 'Internal server error' });
+});
 
 // Start the server
 sequelize.sync().then(() => {
   app.listen(3006, () => {
-    console.log('Server is running on port 3000');
+    console.log('Server is running on port 3006');
   });
 }).catch(error => {
   console.error('Unable to connect to the database:', error);
