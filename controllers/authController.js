@@ -72,7 +72,7 @@ const login = async (req, res) => {
       expiresIn: '1h',
     });
 
-   res.cookie('token', token, { httpOnly: true });
+ res.cookie('tokensss', token, { httpOnly: true, sameSite: 'none', secure: true });
 
   res.status(200).json({ token ,role:user.role});
   } catch (error) {
