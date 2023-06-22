@@ -15,10 +15,11 @@ const authMiddleware = async (req, res, next) => {
          return res.status(401).json({ message: 'Authorization token is missing or invalid' });
        }
 
-       console.log(jwtSecret,">>>>>>>>>JWTTT")
+      
        
        // Extract the token
        const token = authHeader.split(' ')[1];
+      
 
     if (!token) {
       return res.status(401).json({ message: 'Authorization token is missing' });
@@ -26,7 +27,8 @@ const authMiddleware = async (req, res, next) => {
 
     // Verify the token
     const decoded = jwt.verify(token, jwtSecret);
-
+    console.log(decoded,">>>>>>>>>JWTTT")
+    console.log(decoded.userId,">>>>>>>>>userID!!!")
     // Get the user ID from the decoded token
     const userId = decoded.userId;
 
