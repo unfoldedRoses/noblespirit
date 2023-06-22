@@ -87,7 +87,7 @@ const login = async (req, res) => {
     //   maxAge: 24 * 60 * 60 * 1000,
     // });
 
-    res.setHeader('Set-Cookie', 'token=token; Secure; SameSite=None; Max-Age=3600');
+    // res.setHeader('Set-Cookie', 'token=token; Secure; SameSite=None; Max-Age=3600');
      res.cookie('token', token, {
       httpOnly: false,
       sameSite: 'none',
