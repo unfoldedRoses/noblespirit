@@ -74,13 +74,14 @@ const login = async (req, res) => {
       expiresIn: '1h',
     });
 
-  res.cookie('token', token, {
-    httpOnly: false,
-    secure: true,
-    sameSite: 'none',
-    maxAge: 3600000, // 1 hour
+   res.cookie('token', token, {
+    httpOnly: true, // Ensures the cookie is accessible only via HTTP(S)
+    secure: true, // Ensures the cookie is only sent over HTTPS
+    sameSite: 'none', // Allows cross-site requests to include the cookie
+    maxAge: 3600000, // 1 hour (cookie expiration time)
   });
-   res.sendStatus(200);
+
+  res.send('Cookie set successfully');
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
