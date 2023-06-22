@@ -19,7 +19,6 @@ require('dotenv').config()
 app.use(cors({
   origin: process.env.CLIENT_URL,
   credentials: true,
-  secure: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
