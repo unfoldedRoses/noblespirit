@@ -38,14 +38,15 @@ const register = async (req, res) => {
      const token = jwt.sign({ id: newUser.id }, jwtSecret, { expiresIn: '1d' });
 
 
+   // Set the cookie with the token
     res.cookie('token', token, {
-    httpOnly: false,
-    secure: true,
-    sameSite: 'none',
-    maxAge: 3600000, // 1 hour
-  });
+      httpOnly: true,
+      maxAge: 3600000, // 1 hour
+    });
 
-  res.status(200).json({ message: 'Login successful', token });
+    res.status(200).json({ message: 'Login successful', token });
+
+ 
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
