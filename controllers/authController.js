@@ -35,7 +35,7 @@ const register = async (req, res) => {
     });
 
      // Generate JWT token
-     const token = jwt.sign({ id: newUser.id }, jwtSecret, { expiresIn: '1d' });
+    // const token = jwt.sign({ id: newUser.id }, jwtSecret, { expiresIn: '1d' });
 
      // Set the cookie with the token
     // res.cookie('token', token, {
