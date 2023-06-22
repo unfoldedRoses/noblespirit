@@ -89,7 +89,7 @@ const login = async (req, res) => {
 
     // res.setHeader('Set-Cookie', 'token=token; Secure; SameSite=None; Max-Age=3600');
     res.setHeader('Set-Cookie', `token=${token}; Secure; SameSite=None; Max-Age=3600`);
-    res.status(200).json({ token ,role:user.role});
+   res.sendStatus(200);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
