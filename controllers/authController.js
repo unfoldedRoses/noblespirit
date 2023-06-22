@@ -88,14 +88,7 @@ const login = async (req, res) => {
     // });
 
     // res.setHeader('Set-Cookie', 'token=token; Secure; SameSite=None; Max-Age=3600');
-     res.cookie('token', token, {
-      httpOnly: false,
-      sameSite: 'none',
-      maxAge: 3600000, // 1 hour
-    });
-
-
-
+    res.setHeader('Set-Cookie', `token=${token}; Secure; SameSite=None; Max-Age=3600`);
     res.status(200).json({ token ,role:user.role});
   } catch (error) {
     console.error(error);
