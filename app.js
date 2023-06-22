@@ -11,9 +11,8 @@ require('dotenv').config();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: "*.*",
   credentials: true,
-  
 }));
 
 // Use the cookie-parser middleware
