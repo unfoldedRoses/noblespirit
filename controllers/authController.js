@@ -78,7 +78,7 @@ const login = async (req, res) => {
     maxAge: 3600000, // 1 hour (cookie expiration time)
   });
 
-  res.send('Cookie set successfully');
+  res.status(200).json({ token ,role:user.role});
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
