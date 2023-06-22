@@ -54,7 +54,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+      console.log("login route reached!!!")
     // Check if user exists
     const user = await User.findOne({ where: { email } });
     if (!user) {
