@@ -18,7 +18,7 @@ require('dotenv').config()
 // Middleware
 app.use(cors({
   // origin: process.env.CLIENT_URL,
-   origin: '*',
+   origin: 'https://noble-spiritz.vercel.app',
   credentials: true,
   // allowedHeaders: ['Content-Type', 'Authorization'],
 }));
