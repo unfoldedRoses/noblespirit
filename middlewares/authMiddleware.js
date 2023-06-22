@@ -16,7 +16,7 @@ const authMiddleware = async (req, res, next) => {
        }
 
       
-       console.log(authHeader,">>>>>>>>>token")
+       console.log(req.headers.authorization,">>>>>>>>>token")
        // Extract the token
        const token = authHeader.split(' ')[1];
       
