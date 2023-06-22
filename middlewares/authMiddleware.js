@@ -14,6 +14,8 @@ const authMiddleware = async (req, res, next) => {
        if (!authHeader || !authHeader.startsWith('Bearer ')) {
          return res.status(401).json({ message: 'Authorization token is missing or invalid' });
        }
+
+       console.log(jwtSecret,">>>>>>>>>JWTTT")
        
        // Extract the token
        const token = authHeader.split(' ')[1];
@@ -44,6 +46,8 @@ const authMiddleware = async (req, res, next) => {
     res.status(401).json({ message: 'Authentication failed' });
   }
 };
+
+
 
 const authorizeLearner = (req, res, next) => {
   // Check if the authenticated user has the 'learner' role
