@@ -73,7 +73,7 @@ const login = async (req, res) => {
     });
 
  res.cookie('token', token);
-  res.status(200).json({ token ,role:user.role});
+  res.status(200).json({ token ,role:user.role,message:"success!"});
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
