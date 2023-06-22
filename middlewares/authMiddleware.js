@@ -16,11 +16,11 @@ const authMiddleware = async (req, res, next) => {
        }
 
       
-       
+       console.log(authHeader,">>>>>>>>>token")
        // Extract the token
        const token = authHeader.split(' ')[1];
       
-       console.log(token,">>>>>>>>>token")
+      
     if (!token) {
       return res.status(401).json({ message: 'Authorization token is missing' });
     }
