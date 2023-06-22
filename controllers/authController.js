@@ -77,10 +77,10 @@ const login = async (req, res) => {
       httpOnly: true,
       secure: true, // Enable this in production if using HTTPS
       maxAge: 3600000, // 1 hour expiration
-      sameSite: 'none', // Enable this for cross-site requests
+      sameSite: 'None', // Enable this for cross-site requests
     });
 
-    
+
   res.status(200).json({ token ,role:user.role,message:"success!"});
   } catch (error) {
     console.error(error);
