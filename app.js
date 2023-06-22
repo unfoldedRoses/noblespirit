@@ -13,8 +13,7 @@ require('dotenv').config();
 app.use(cors({
   origin: process.env.CLIENT_URL,
   credentials: true,
-  
-}));
+  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept', allowedMethods: 'GET, POST, PUT, DELETE' }));
 
 // Use the cookie-parser middleware
 app.use(cookieParser());
