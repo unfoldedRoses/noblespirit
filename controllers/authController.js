@@ -73,12 +73,10 @@ const login = async (req, res) => {
     });
 
     // Set the token as a cookie
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: true, // Enable this in production if using HTTPS
-      maxAge: 3600000, // 1 hour expiration
-      sameSite: 'None', // Enable this for cross-site requests
-    });
+    const cookie = `token=${token}; HttpOnly; Secure; Max-Age=3600; SameSite=None`;
+
+    // Set the 'set-cookie' header in the response
+    res.setHeader('Set-Cookie', cookie);
 
 
   res.status(200).json({ token ,role:user.role,message:"success!"});
